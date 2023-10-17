@@ -24,7 +24,7 @@
             resultPrint(userWord, reversed, msg)
         } else {
             msg = "Inserisci una parola corretta!!"
-            resultPrint (msg)
+            resultPrint(msg)
         }
 
         //FUNCTIONS
@@ -52,3 +52,69 @@
         }
     }
 })()
+
+/**
+ * PARI O DISPARI
+*/
+
+EvenOddGame()
+
+function EvenOddGame() {
+    const btn = document.querySelector("#app2 button");
+    btn.addEventListener("click", evenOddVerify)
+    
+    function evenOddVerify () {
+         //dichiaro le variabili che mi servono nelle funzioni
+    const inputEl2 = document.getElementById("data2")
+    const inputEl3 = document.getElementById("data3");
+    const finalPrint = document.querySelector(".alert2");
+    let userChoiseNN = inputEl2.value;
+    let userChoise = userChoiseNN.toLowerCase()
+    let userValue = parseInt(inputEl3.value);
+    let pcValue = getRndInteger(1, 5);
+    let somma = userValue + pcValue;
+    let result;
+    let msg;
+
+    if (((userChoise !== "pari") && (userChoise !== "dispari")) || (userValue > 5)) {
+        finalPrint.innerHTML =
+            `
+        Inserisci valori corretti!
+        `
+        finalPrint.classList.remove("d-none")
+    } else {
+        myIsEven(somma);
+
+        myResult(userChoise, result)
+
+        printWinner(userChoise, userValue, pcValue, somma, msg)
+    }
+
+    function myIsEven(num) {
+        result = (somma % 2 === 0) ? "even" : "odd"
+    }
+    function myResult(choise, resulting) {
+        if ((userChoise === "pari" && result === "even") || (userChoise === "dispari" && result === "odd")) {
+            msg = "hai vinto!!"
+        } else {
+            msg = "hai perso!!"
+        }
+    }
+    function printWinner(choise, value1, value2, sum, message) {
+        finalPrint.innerHTML =
+            `
+        La tua scelta: ${userChoise} <br>
+        Il tuo numero: ${userValue} <br>
+        Il mio numero: ${pcValue} <br>
+        Somma dei numeri: ${somma} <br>
+        Vincitore: ${msg}
+        `
+        finalPrint.classList.remove("d-none")
+    }
+    }
+
+}
+
+
+
+
