@@ -2,33 +2,48 @@
  * PALINDROMO
 */
 
-// catturo il bottone in una variabile
-const btn = document.querySelector("#app button");
-// catturo l'input in una variabile
-const inputEl = document.getElementById("data");
+(function palindromaGame() {
 
-btn.addEventListener("click", function () {
-    // catturo il dato dell'user in una variabile
-    let userWord = inputEl.value;
-    //creo un ciclo per reversare la parola dell'user
-    let reversed = "";
-    for (let i = userWord.length - 1; i >= 0; i--) {
-       reversed += userWord[i]
+    const btn = document.querySelector("#app button");
+    btn.addEventListener("click", verification)
+    function verification() {
+        // prendo i valori che mi serviranno in tutte le funzioni
+        const inputEl = document.getElementById("data");
+        let userWord = inputEl.value;
+        let reversed = "";
+        let msg;
+    
+        //prendo la parola e la riverto tramite funzione, ritornerà la parola reversata
+        takeAndRevert(userWord, reversed);
+        
+        // creo la condizione per verificare se la parola è palindroma
+        message(userWord,reversed)
+    
+        // stampo i risultati 
+        resultPrint(userWord,reversed,msg)
+    
+        //FUNCTIONS
+        function takeAndRevert(word1, word2){
+            for (let i = userWord.length - 1; i >= 0; i--) {
+                reversed += userWord[i]
+            }
+        }
+        function message(mess1,mess2) {
+            if (userWord === reversed) {
+                msg = "La tua parola è Palindroma!"
+                } else {
+                msg = "La tua parola non è Palindroma!"
+                }
+        }
+        function resultPrint(word1, word2, message) {
+            const alertEl = document.querySelector(".alert");
+        alertEl.classList.remove("d-none")
+        alertEl.innerHTML = 
+        `
+        ${userWord}
+        ${reversed}
+        ${msg}
+        ` 
+        }
     }
-    // creo la condizione per verificare se la parola è palindroma
-    let msg;  
-    if (userWord === reversed) {
-    msg = "La tua parola è Palindroma!"
-    } else {
-    msg = "La tua parola non è Palindroma!"
-    }
-    // stampo i risultati 
-    const alertEl = document.querySelector(".alert");
-    alertEl.classList.remove("d-none")
-    alertEl.innerHTML = 
-    `
-    ${userWord}
-    ${reversed}
-    ${msg}
-    `  
-})
+})()
