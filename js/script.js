@@ -75,7 +75,7 @@ function EvenOddGame() {
     let result;
     let msg;
 
-    if (((userChoise !== "pari") && (userChoise !== "dispari")) || (userValue > 5)) {
+    if (((userChoise !== "pari") && (userChoise !== "dispari")) || ((userValue > 5) || (userValue < 1))) {
         finalPrint.innerHTML =
             `
         Inserisci valori corretti!
