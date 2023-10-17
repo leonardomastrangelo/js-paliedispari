@@ -1,7 +1,6 @@
 /**
  * PALINDROMO
 */
-
 (function palindromaGame() {
 
     const btn = document.querySelector("#app button");
@@ -9,8 +8,10 @@
     function verification() {
         // prendo i valori che mi serviranno in tutte le funzioni
         const inputEl = document.getElementById("data");
-        let userWord = inputEl.value;
-        let reversed = "";
+        let userWordNN = inputEl.value;
+        let userWord = userWordNN.toLowerCase()
+        let reversedNN = "";
+        let reversed = reversedNN.toLocaleLowerCase()
         let msg;
 
         if (userWord !== "") {
@@ -56,15 +57,13 @@
 /**
  * PARI O DISPARI
 */
-
 EvenOddGame()
-
 function EvenOddGame() {
     const btn = document.querySelector("#app2 button");
     btn.addEventListener("click", evenOddVerify)
     
     function evenOddVerify () {
-         //dichiaro le variabili che mi servono nelle funzioni
+    //dichiaro le variabili che mi servono nelle funzioni
     const inputEl2 = document.getElementById("data2")
     const inputEl3 = document.getElementById("data3");
     const finalPrint = document.querySelector(".alert2");
